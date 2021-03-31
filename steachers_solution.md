@@ -61,10 +61,30 @@ proceeding.*
     Al-idariyyah) found in the data?
 
 ``` r
-#Add some code
+tdata %>% count(administrative_regions) %>% arrange(desc(n)) 
 ```
 
-Comments about your answer:
+    ## # A tibble: 13 x 2
+    ##    administrative_regions     n
+    ##    <chr>                  <int>
+    ##  1 الرياض                 31617
+    ##  2 مكة المكرمة            26944
+    ##  3 عسير                   15462
+    ##  4 الشرقية                15034
+    ##  5 المدينة المنورة        10012
+    ##  6 القصيم                  9449
+    ##  7 جازان                   9229
+    ##  8 حائل                    5302
+    ##  9 تبوك                    4722
+    ## 10 الباحة                  4220
+    ## 11 الجوف                   3442
+    ## 12 نجران                   2933
+    ## 13 الحدود الشمالية         2072
+
+Comments about your answer: the biggest regions ( alryad = 31617) and
+the smallest one ( alhodood alshamalya = 2072) . the most densely
+populated region is the one with the most employment of teachers
+(alryad)
 
 1.  Based on your knowledge of the administrative regions in Saudi
     Arabia, is there any region that has not recruited any teacher
@@ -72,8 +92,53 @@ Comments about your answer:
     regions shown in the data.
 
 ``` r
-#Add some code
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Teachers==0)%>% count(administrative_regions)
 ```
+
+    ## # A tibble: 0 x 2
+    ## # ... with 2 variables: administrative_regions <chr>, n <int>
+
+``` r
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Non_Saudi_teacher==0)%>% count(administrative_regions)%>%arrange(desc(n)) 
+```
+
+    ## # A tibble: 13 x 2
+    ##    administrative_regions     n
+    ##    <chr>                  <int>
+    ##  1 الرياض                 25271
+    ##  2 مكة المكرمة            22492
+    ##  3 عسير                   14773
+    ##  4 الشرقية                12160
+    ##  5 المدينة المنورة         9220
+    ##  6 القصيم                  9054
+    ##  7 جازان                   8766
+    ##  8 حائل                    5014
+    ##  9 تبوك                    4211
+    ## 10 الباحة                  4165
+    ## 11 الجوف                   2852
+    ## 12 نجران                   2661
+    ## 13 الحدود الشمالية         1826
+
+``` r
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Saudi_teacher==0)%>% count(administrative_regions)%>%arrange(desc(n)) 
+```
+
+    ## # A tibble: 13 x 2
+    ##    administrative_regions     n
+    ##    <chr>                  <int>
+    ##  1 الرياض                   652
+    ##  2 مكة المكرمة              509
+    ##  3 الشرقية                  289
+    ##  4 المدينة المنورة          100
+    ##  5 عسير                      51
+    ##  6 الجوف                     32
+    ##  7 حائل                      31
+    ##  8 تبوك                      29
+    ##  9 القصيم                    24
+    ## 10 نجران                     22
+    ## 11 جازان                     17
+    ## 12 الحدود الشمالية           15
+    ## 13 الباحة                     1
 
 Comments about your answer:
 

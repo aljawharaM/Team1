@@ -72,15 +72,20 @@ Next Team Member should *Pull the changes made by Team Leader before proceeding.
 (a) What are the different administrative_regions (Al-Mandaqah Al-idariyyah) found in the data?
 
 ```{r admin_regions}
-#Add some code
+tdata %>% count(administrative_regions) %>% arrange(desc(n)) 
 ```
 
 Comments about your answer:
+the biggest regions ( alryad = 31617) and the smallest one ( alhodood alshamalya = 2072) . the most densely populated region is the one with the most employment of teachers (alryad)
 
 (b) Based on your knowledge of the administrative regions in Saudi Arabia, is there any region that has not recruited any teacher during the period under review (1437 - 1440 Hijri)? List the Saudi regions shown in the data.
 
 ```{r not_recruited_admin_regions}
-#Add some code
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Teachers==0)%>% count(administrative_regions)
+
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Non_Saudi_teacher==0)%>% count(administrative_regions)%>%arrange(desc(n)) 
+
+tdata %>% filter(the_year>=1437 ,the_year<=1440, Saudi_teacher==0)%>% count(administrative_regions)%>%arrange(desc(n)) 
 ```
 
 Comments about your answer:

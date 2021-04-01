@@ -102,19 +102,24 @@ The Next Team Member should *Pull the changes made by Member 1 before proceeding
 (a) Saudi Arabian education is divided into different stages/levels (Al-Marhala), list the different levels showed in the data in descDEADLINE: ENDing order of frequency. (4 points)
 
 ```{r study_levels}
-#Add some code
+factor(tdata$levels_school)
+table (tdata$levels_school)
+count(tdata,  'levels_school')
+tabl(tdata$levels_school,sort.group  =  "decreasing",cum.percent = TRUE)
+tdata%>%arrange(desc(levels_school)) 
+
 ```
 
-Comments about your answer:
+Comments about your answer: That we have 140438 (in) (n) of levels_school
 
 (b) Which level recruit the most teachers? (4 points)
 
 
 ```{r most_teachers}
-#Add some code
+tdata%>%conunt(levels_school)%>%arrange(desc(n))
 ```
 
-Comments about your answer:
+Comments about your answer:The largest level in recruitment is the primary Schools and the lowest level is the continue  learning so we should educate and qualify specialized teachers at the primary stage because it is The most important stage in terms of employment recruitment and also the most important in students lives
 
 The Team Member should *Knit, commit, and push changes to GitHub with an appropriate commit message.*
 
